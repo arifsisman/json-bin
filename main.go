@@ -20,7 +20,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
-	e.POST("/", controllers.NewRecord)
+	e.POST("/", controllers.NewBin)
 	// e.GET("/", newRecord)
 
 	// Start server
