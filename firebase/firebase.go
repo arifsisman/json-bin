@@ -13,39 +13,48 @@ import (
 
 var app *firebase.App
 var db *firebaseDB.Client
-var binsRef *firebaseDB.Ref
 
 var err error
 
 func InitializeApp() {
 	ctx := context.Background()
 
-	opt := option.WithCredentialsFile("/Users/arif/go/firebase-credentials.json")
 	config := &firebase.Config{
 		DatabaseURL: "https://jsonbin-9fae0-default-rtdb.europe-west1.firebasedatabase.app",
 	}
+
+	opt := option.WithCredentialsFile("/Users/arif/go/firebase-credentials.json")
 	app, err = firebase.NewApp(ctx, config, opt)
 
 	if err != nil {
-		log.Printf("error initializing app: %v", err)
+		log.Printf("Error initializing APP: %v", err)
 		return
 	}
 
 	db, err = app.Database(ctx)
 
 	if err != nil {
-		log.Printf("error initializing DB: %v", err)
+		log.Printf("Error initializing DB: %v", err)
 		return
 	}
-
-	binsRef = db.NewRef("bins")
 }
 
-func NewBin(record string) string {
+func NewBin(json string) string {
 	ctx := context.Background()
 
 	uuid := uuid.New().String()
-	binsRef.Child(uuid).Set(ctx, record)
+	db.NewRef("bins").Child(uuid).Set(ctx, json)
 
 	return uuid
+}
+
+func GetBin(uuid string) string {
+	ctx := context.Background()
+
+	var json string
+	if err := db.NewRef("bins/"+uuid).Get(ctx, &json); err != nil {
+		log.Fatal(err)
+	}
+
+	return json
 }

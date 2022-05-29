@@ -22,3 +22,5 @@ go.work
 
 .env
 firebase-credentials.json
+
+__debug_bin

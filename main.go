@@ -21,7 +21,7 @@ func main() {
 
 	// Routes
 	e.POST("/", controllers.NewBin)
-	// e.GET("/", newRecord)
+	e.GET("/:uuid", controllers.GetBin)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))
