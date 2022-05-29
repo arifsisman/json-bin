@@ -9,13 +9,13 @@ import (
 )
 
 func NewBin(c echo.Context) error {
-	jsonFromRequest := c.FormValue("json")
+	json := c.FormValue("json")
 
-	if !helpers.IsValidJSON(jsonFromRequest) {
+	if !helpers.IsValidJSON(json) {
 		return c.String(http.StatusBadRequest, "Not a valid JSON!")
 	}
 
-	id := firebase.NewBin(jsonFromRequest)
+	id := firebase.NewBin(json)
 	return c.String(http.StatusOK, id)
 }
 
