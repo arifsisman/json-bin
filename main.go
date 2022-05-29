@@ -1,13 +1,17 @@
 package main
 
 import (
-	"net/http"
+	"json-bin/controllers"
+	"json-bin/firebase"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
+	// Init firebase
+	firebase.InitializeApp()
+
 	// Echo instance
 	e := echo.New()
 
@@ -16,13 +20,9 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
-	e.GET("/", hello)
+	e.POST("/", controllers.NewRecord)
+	// e.GET("/", newRecord)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))
-}
-
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
 }
