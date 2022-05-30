@@ -11,10 +11,13 @@ import Button from 'primevue/button';
 import Divider from 'primevue/divider';
 import Textarea from 'primevue/textarea';
 
+import VJsoneditor from 'v-jsoneditor'
+
 const app = createApp(App)
 
 app.use(router)
 app.use(PrimeVue)
+app.use(VJsoneditor)
 
 app
 .component('Button', Button)

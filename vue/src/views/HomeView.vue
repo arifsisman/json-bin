@@ -8,8 +8,8 @@ function save() {
 }
 
 function onTextChange(value) {
-  console.log(value);
   jsonString = value;
+  console.log(jsonString);
 }
 </script>
 
