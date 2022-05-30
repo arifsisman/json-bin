@@ -7,19 +7,14 @@ import { useToast } from "primevue/usetoast"
 const toast = useToast()
 toast.add({ severity: "info", summary: "Info Message" })
 
-const json = ref('{"a":"aaas"}')
+const json = ref(JSON.parse('{"a":"aaas"}'))
 const isValidJson = ref(false)
 
-onMounted(() => validateJson())
+onMounted(() => onTextChange(json.value))
 
 const onTextChange = (text) => {
-  json.value = text
-  validateJson()
-}
-
-const validateJson = () => {
   try {
-    JSON.parse(json.value)
+    json.value = JSON.parse(text)
     isValidJson.value = true
   } catch (e) {
     isValidJson.value = false
@@ -54,8 +49,6 @@ const newBin = () => {
   <JsonEditor :json="json" :isValidJson="isValidJson" @onTextChange="onTextChange"></JsonEditor>
   <Button label="Save" class="save-button" @click="newBin"></Button>
   <Toast position="bottom-center" />
-  <span>json: {{ json }}</span> <br />
-  <span>isValid: {{ isValidJson }}</span>
 </template>
 
 <style scoped>

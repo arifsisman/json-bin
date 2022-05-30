@@ -1,9 +1,8 @@
 <script setup>
 const props = defineProps({
   json: {
-    type: String,
-    default: "",
-    required: true
+    type: Object,
+    default: {}
   },
   isValidJson: {
     type: Boolean,
@@ -12,15 +11,20 @@ const props = defineProps({
 })
 
 const emit = defineEmits(["onTextChange", "onJsonValidate"])
+
+const getValue = () => {
+  return JSON.stringify(props.json, null, 2)
+}
 </script>
 
 <template>
   <div class="main-area">
     <Textarea
-      :value="props.json"
+      :value="getValue()"
       @input="emit('onTextChange', $event.target.value)"
-      class="text-area"
+      class="text-area language-json"
       :class="props.isValidJson ? 'valid' : 'invalid'"
+      :auto-resize="true"
       rows="30"
     />
   </div>

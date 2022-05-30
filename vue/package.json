@@ -12,7 +12,9 @@
     "primeicons": "^5.0.0",
     "primevue": "^3.12.6",
     "vue": "^3.2.33",
-    "vue-router": "^4.0.14"
+    "vue-json-pretty": "^2.1.0",
+    "vue-router": "^4.0.14",
+    "vue3-json-editor": "^1.1.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

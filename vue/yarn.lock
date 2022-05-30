@@ -127,6 +127,11 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
+core-js@^3.21.1:
+  version "3.22.7"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.7.tgz#8d6c37f630f6139b8732d10f2c114c3f1d00024f"
+  integrity sha512-Jt8SReuDKVNZnZEzyEQT5eK6T2RRCXkfTq7Lo09kpm+fHjgGewSbNjV+Wt4yZMhPDdzz2x1ulI5z/w4nxpBseg==
+
 csstype@^2.6.8:
   version "2.6.20"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.20.tgz#9229c65ea0b260cf4d3d997cb06288e36a8d6dda"
@@ -412,6 +417,11 @@ vite@^2.9.5:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-json-pretty@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-json-pretty/-/vue-json-pretty-2.1.0.tgz#8328e7f31bebd53fd7b6549008c9bd727a86eb09"
+  integrity sha512-SPSNacJCTKx52nEXB3Nl8cEFgW4j7DHbdb1w0BEQkGMjoM51Y/8Zj4QfjaoiHseDbBuG7CYjDTvIuKe9Ln5qRw==
+
 vue-router@^4.0.14:
   version "4.0.15"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.15.tgz#b4a0661efe197f8c724e0f233308f8776e2c3667"
@@ -419,7 +429,15 @@ vue-router@^4.0.14:
   dependencies:
     "@vue/devtools-api" "^6.0.0"
 
-vue@^3.2.33:
+vue3-json-editor@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/vue3-json-editor/-/vue3-json-editor-1.1.5.tgz#1e75402e21f7e57d22f548a516874ea7cdebdd65"
+  integrity sha512-p+hbl5SdMifA9brPt9TsG2HYB7Xy7xy98b61zcIusVpwhGtS5a0IwWPKM7BXcj9poIdc/bPs4AFchQOHIBq++w==
+  dependencies:
+    core-js "^3.21.1"
+    vue "^3.2.31"
+
+vue@^3.2.31, vue@^3.2.33:
   version "3.2.36"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.36.tgz#8daa996e2ced521708de97d066c7c998e8bc3378"
   integrity sha512-5yTXmrE6gW8IQgttzHW5bfBiFA6mx35ZXHjGLDmKYzW6MMmYvCwuKybANRepwkMYeXw2v1buGg3/lPICY5YlZw==
