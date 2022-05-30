@@ -1,43 +1,22 @@
 <script setup>
-import { ref } from "vue";
-
-const emit = defineEmits(["onTextChange"]);
-const props = defineProps(["jsonString"]);
-const json = ref(props.jsonString);
-
-let isInvalidJson = false;
-// let json = "1111";
-
-function formatPaste(event) {
-  if (event.inputType === "insertText") {
-    emit("onTextChange", event.target.text);
-    return;
+const props = defineProps({
+  json: {
+    type: String,
+    default: "",
+    required: true
   }
+})
 
-  // paste
-  const clipboardData = event.target.value;
-  console.log(clipboardData);
-
-  try {
-    // json = JSON.stringify(JSON.parse(clipboardData), null, 2);
-
-    isInvalidJson = false;
-    emit("onTextChange", clipboardData);
-  } catch (e) {
-    console.log("Invalid JSON");
-    isInvalidJson = true;
-  }
-}
+const emit = defineEmits(["onTextChange", "onJsonValidate"])
 </script>
 
 <template>
   <div class="main-area">
     <Textarea
-      v-model="json"
+      :value="props.json"
+      @input="emit('onTextChange', $event.target.value)"
       class="text-area"
       rows="30"
-      :class="{ invalid: isInvalidJson }"
-      @input="formatPaste"
     />
   </div>
 </template>
@@ -50,7 +29,6 @@ function formatPaste(event) {
 }
 
 .invalid {
-  border: 10px solid red;
-  border-color: red;
+  border: 1px solid red;
 }
 </style>
