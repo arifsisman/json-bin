@@ -1,7 +1,7 @@
 <script setup>
 import JsonEditor from "../components/JsonEditor.vue"
-import { onMounted, ref, watch } from "vue"
-import axios from "axios"
+import { onMounted, ref } from "vue"
+import api from "../client/axios"
 
 const json = ref('{"a":"aaas"}')
 const isValidJson = ref(false)
@@ -22,16 +22,11 @@ const validateJson = () => {
   }
 }
 
-const newBin = async () => {
-  try {
-    const body = JSON.stringify(json)
-    const response = await axios.post("http://localhost:3000/", body)
-    if (response.status === 200) {
-      console.log(response.data)
-    }
-  } catch (error) {
-    console.error(error)
-  }
+const newBin = () => {
+  api
+    .post("/", json.value)
+    .then((res) => console.log(res))
+    .catch((err) => console.error(err))
 }
 </script>
 

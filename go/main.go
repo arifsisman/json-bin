@@ -17,6 +17,7 @@ func main() {
 
 	// Middleware
 	e.Use(middleware.Logger())
+	e.Use(middleware.CORS())
 	e.Use(middleware.Recover())
 
 	// Routes

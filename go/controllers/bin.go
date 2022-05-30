@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"io/ioutil"
 	"json-bin/firebase"
 	"json-bin/helpers"
 	"net/http"
@@ -9,13 +10,14 @@ import (
 )
 
 func NewBin(c echo.Context) error {
-	json := c.FormValue("json")
+	jsonBodyBytes, err := ioutil.ReadAll(c.Request().Body)
+	jsonBody := string(jsonBodyBytes)
 
-	if !helpers.IsValidJSON(json) {
+	if err != nil || !helpers.IsValidJSON(jsonBody) {
 		return c.String(http.StatusBadRequest, "Not a valid JSON!")
 	}
 
-	id := firebase.NewBin(json)
+	id := firebase.NewBin(jsonBody)
 	return c.String(http.StatusOK, id)
 }
 
